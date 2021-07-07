@@ -1,0 +1,5 @@
+A T&C Document
+Is made of [CLAUSE-3].
+Is made of [SECTION-5].
+
+Your legals.

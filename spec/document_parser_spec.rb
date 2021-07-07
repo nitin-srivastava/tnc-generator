@@ -23,4 +23,43 @@ RSpec.describe DocumentParser do
       expect(subject.sections_hash).not_to be_nil
     end
   end
+
+  describe '#parse' do
+    context 'when successful then' do
+      it 'returns the contents' do
+        content = subject.parse('spec/files/valid_template.txt')
+        expect(content).to include("A T&C Document\n")
+        expect(content).to include("This document is made of plaintext.\n")
+        expect(content).to include("Is made of And dies.\n")
+        expect(content).to include("Is made of The white horse is white.\n")
+        expect(content).to include("Is made of The quick brown fox;jumps over the lazy dog.\n")
+        expect(content).to include("Your legals.")
+      end
+    end
+
+    context 'when template has no tags then' do
+      it 'returns the contents' do
+        content = subject.parse('spec/files/template_without_tags.txt')
+        expect(content).to include("A T&C Document\n")
+        expect(content).to include("This document is made of plaintext.\n")
+        expect(content).to include("Your legals.")
+      end
+    end
+
+    context 'when an invalid CLAUSE exist then' do
+      it 'raise the error' do
+        expect do
+          subject.parse('spec/files/template_with_invalid_clause.txt')
+        end.to output("\nDocument Parse Error:: Invalid tag [CLAUSE-8] in line 3.\n").to_stdout
+      end
+    end
+
+    context 'when an invalid SECTION exist then' do
+      it 'raise the error' do
+        expect do
+          subject.parse('spec/files/template_with_invalid_section.txt')
+        end.to output("\nDocument Parse Error:: Invalid tag [SECTION-5] in line 3.\n").to_stdout
+      end
+    end
+  end
 end
