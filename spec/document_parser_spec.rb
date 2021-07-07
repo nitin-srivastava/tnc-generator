@@ -84,11 +84,13 @@ RSpec.describe DocumentParser do
 
     context 'unsuccessful' do
       before do
-        allow(subject).to receive(:generate).and_raise(StandardError.new("Something went wrong."))
+        allow(File).to receive(:open).and_raise(StandardError.new("Something went wrong."))
       end
 
       it 'generates a tnc_document.txt file having passed contents' do
-        expect { subject.generate('Test message') }.to raise_error('Something went wrong.')
+        expect do
+          subject.generate('Test message')
+        end.to output("\nSomething went wrong.\n").to_stdout
         expect(File.exist?(file_name)).to be_falsey
       end
     end

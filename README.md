@@ -92,8 +92,18 @@ Please select a template file number from the below list:
 2. data/template_one.txt
 3. data/template_two.txt
 ```
-## Setup and run the automated tests
+## Automated tests
+Using `rspec` for testing and `simplecov` for test coverage.
+#### RSpec
+Use below command to run the test suites.
+```
+$ bundle exec rspec
+```
+#### Test Coverage (Simplecov)
+Using `simplecov` to record the test coverage. The code coverage get recorded in `coverage` folder. To see the result, open the `coverage/index.html` file in browser after running the `rspec`.
 
+I have achieved 100% code coverage in this project. See attached screenshot.
+## Thank you
 Hope you found the given instructions helpful.
 
 ## Developer
