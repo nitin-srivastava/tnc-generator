@@ -90,11 +90,8 @@ class DocumentParser
   end
 
   def file_path
-    if ENV.fetch('RUBY_ENV').eql?('test')
-      'spec/files/tnc_document.txt'
-    else
-      'tmp/tnc_document.txt'
-    end
+    return 'tmp/tnc_document.txt' unless ENV['RUBY_ENV'].eql?('test')
+    'spec/files/tnc_document.txt'
   end
 
   def delete_existing_file(file_name)

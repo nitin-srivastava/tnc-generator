@@ -1,0 +1,8 @@
+A T&C Document
+This document is made of plaintext.
+Is made of [CLAUSE-3].
+Is made of [SECTION-1].
+Is made of [CLAUSE-1] and [SECTION-2].
+Is made of [SECTION-3], and also includes [CLAUSE-4].
+
+Your legals.
