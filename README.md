@@ -103,6 +103,7 @@ $ bundle exec rspec
 Using `simplecov` to record the test coverage. The code coverage get recorded in `coverage` folder. To see the result, open the `coverage/index.html` file in browser after running the `rspec`.
 
 I have achieved 100% code coverage in this project. See attached screenshot.
+![Screenshot 2021-07-07 at 2 25 04 PM](https://user-images.githubusercontent.com/24418296/124730634-290b5e80-df2f-11eb-981d-4ed44650df12.png)
 
 ## Design decisions
 All my design decisions are based on the given time range (4-6 hours).
@@ -124,7 +125,7 @@ The app is enable to rescue and print the error in a nice way if any exceptions 
 #### Data (dataset and templates)
 To consider the given time and **not over engineering**, I have decided to go with static datasets rather than import and parse.
 
-But user is able to create and use their dataset and templates to generate the T&C document. Please have a look at Add your own datasets and/or templates instructions above.
+But user is able to create and use their dataset and templates to generate the T&C document. [See here](https://github.com/nitin-srivastava/tnc-generator#add-your-own-datasets-andor-templates)
 ## Development time
 It took me 5 hours to complete and 30 minutes for documentation.
 #### What I would have done given more time?
