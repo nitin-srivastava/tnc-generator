@@ -18,6 +18,16 @@ class DocumentParser
     puts "\nDocument Parse Error:: #{e.message}"
   end
 
+  def generate(content)
+    delete_existing_file(file_path)
+    File.open(file_path, 'w') do |f|
+      f.write(content)
+      f.close
+    end
+  rescue StandardError => e
+    puts "\n#{e.message}"
+  end
+
   private
 
   def tags_present?(data)
@@ -77,5 +87,17 @@ class DocumentParser
     else
       raise StandardError, "Invalid tag [SECTION-#{section_id}] in line #{line_number}."
     end
+  end
+
+  def file_path
+    if ENV.fetch('RUBY_ENV').eql?('test')
+      'spec/files/tnc_document.txt'
+    else
+      'tmp/tnc_document.txt'
+    end
+  end
+
+  def delete_existing_file(file_name)
+    File.delete(file_name) if File.exist?(file_name)
   end
 end

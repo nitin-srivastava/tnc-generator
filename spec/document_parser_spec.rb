@@ -62,4 +62,35 @@ RSpec.describe DocumentParser do
       end
     end
   end
+
+  describe 'generate' do
+    let(:content) { subject.parse('spec/files/valid_template.txt') }
+    let(:file_name) { 'spec/files/tnc_document.txt' }
+    after do
+      File.delete(file_name) if File.exist?(file_name)
+    end
+
+    context 'successful' do
+      before do
+        expect(File.exist?(file_name)).to be_falsey
+        subject.generate(content)
+      end
+
+      it 'generates a tnc_document.txt file having passed contents' do
+        expect(File.exist?(file_name)).to be_truthy
+        expect(File.open(file_name).read).to eq(content)
+      end
+    end
+
+    context 'unsuccessful' do
+      before do
+        allow(subject).to receive(:generate).and_raise(StandardError.new("Something went wrong."))
+      end
+
+      it 'generates a tnc_document.txt file having passed contents' do
+        expect { subject.generate('Test message') }.to raise_error('Something went wrong.')
+        expect(File.exist?(file_name)).to be_falsey
+      end
+    end
+  end
 end
