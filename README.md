@@ -103,6 +103,34 @@ $ bundle exec rspec
 Using `simplecov` to record the test coverage. The code coverage get recorded in `coverage` folder. To see the result, open the `coverage/index.html` file in browser after running the `rspec`.
 
 I have achieved 100% code coverage in this project. See attached screenshot.
+
+## Design decisions
+All my design decisions are based on the given time range (4-6 hours).
+#### App design
+This app has mainly two classes.
+
+(1) DocumentParser
+  - It parses the template data and return the parsed contents to be generated.
+  - It generates the T&C document with given parsed contents.
+
+(2) DocumentGenerator
+  - It execute the program and ask and collect user input.
+  
+There is also a `main.rb` file to start the app
+
+#### Error handling
+The app is enable to rescue and print the error in a nice way if any exceptions raised.
+
+#### Data (dataset and templates)
+To consider the given time and **not over engineering**, I have decided to go with static datasets rather than import and parse.
+
+But user is able to create and use their dataset and templates to generate the T&C document. Please have a look at Add your own datasets and/or templates instructions above.
+## Development time
+It took me 5 hours to complete and 30 minutes for documentation.
+#### What I would have done given more time?
+Well I would like to make it more dynamic where user can import the clauses and sections and use them to generate the T&C document.
+
+At the moment, I'm using `yml` file format for dataset. It's hard to create a `yml` for non-technical user. To overcome this issue, I would like to add a functionality where user can use a `txt` file to import clauses and sections and use them to generate the T&C document.  
 ## Thank you
 Hope you found the given instructions helpful.
 
